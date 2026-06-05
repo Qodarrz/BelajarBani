@@ -1,165 +1,112 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+/* Custom Styles for "Our Sanctuary" */
+
+html {
+    scroll-behavior: smooth;
 }
 
 body {
-    font-family: 'Outfit', sans-serif;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /* Deep romantic dark gradient */
-    background: linear-gradient(135deg, #1a0b2e, #3b0d2c, #1a0b2e);
-    background-size: 200% 200%;
-    animation: gradientBG 15s ease infinite;
-    overflow: hidden;
-    color: #fff;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
-@keyframes gradientBG {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
-
-#heart-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 1;
-}
-
-.heart {
-    position: absolute;
-    bottom: -10%;
-    color: #ff4d79;
-    font-size: 20px;
-    animation: floatUp 5s linear infinite;
-    opacity: 0.6;
-    filter: drop-shadow(0 0 5px rgba(255, 77, 121, 0.5));
-}
-
-@keyframes floatUp {
-    0% {
-        transform: translateY(0) scale(1) rotate(0deg);
-        opacity: 0;
-    }
-    10% {
-        opacity: 0.8;
-    }
-    90% {
-        opacity: 0.8;
-    }
-    100% {
-        transform: translateY(-110vh) scale(1.5) rotate(360deg);
-        opacity: 0;
-    }
-}
-
-.glass-card {
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 24px;
-    padding: 40px;
-    width: 90%;
-    max-width: 500px;
-    text-align: center;
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
-    z-index: 10;
-    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
-}
-
-.glass-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 40px 0 rgba(255, 77, 121, 0.2);
-}
-
-.title {
-    font-family: 'Dancing Script', cursive;
-    font-size: 3.5rem;
-    color: #ffb3c6;
-    margin-bottom: 10px;
-    text-shadow: 0 2px 10px rgba(255, 179, 198, 0.4);
-}
-
-.subtitle {
-    font-size: 1.1rem;
-    color: #e0e0e0;
-    margin-bottom: 30px;
-    font-weight: 300;
-}
-
-.btn {
-    background: linear-gradient(45deg, #ff4d79, #ff758c);
-    border: none;
-    padding: 14px 35px;
-    border-radius: 50px;
-    color: white;
-    font-size: 1.1rem;
-    font-family: 'Outfit', sans-serif;
-    font-weight: 600;
-    cursor: pointer;
-    box-shadow: 0 4px 15px rgba(255, 77, 121, 0.4);
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-}
-
-.btn::after {
+/* Timeline Customizations */
+.timeline-container::before {
     content: '';
     position: absolute;
     top: 0;
-    left: -100%;
+    bottom: 0;
+    left: 50%;
+    width: 2px;
+    background-color: #F9EDF2; /* rose-100 */
+    transform: translateX(-50%);
+    z-index: 0;
+}
+
+@media (max-width: 768px) {
+    .timeline-container::before {
+        left: 24px;
+    }
+    
+    .timeline-container > div {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        padding-left: 60px;
+        position: relative;
+    }
+    
+    .timeline-container .w-5\/12 {
+        width: 100%;
+        text-align: left !important;
+        padding: 0 !important;
+        margin-bottom: 1rem;
+    }
+    
+    .timeline-container .w-2\/12 {
+        position: absolute;
+        left: 16px;
+        top: 4px;
+        width: auto;
+    }
+}
+
+/* Polaroid Gallery Cards */
+.polaroid-card {
+    background: white;
+    padding: 16px 16px 40px 16px;
+    box-shadow: 0 4px 15px -3px rgba(0, 0, 0, 0.05), 0 10px 20px -2px rgba(0, 0, 0, 0.025);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #f0f0f0;
+}
+
+.polaroid-card img {
     width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-    transition: all 0.5s ease;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    background: #f9f9f9;
+    filter: sepia(10%) contrast(95%);
+    transition: filter 0.3s ease;
 }
 
-.btn:hover::after {
-    left: 100%;
+.polaroid-card:hover {
+    transform: translateY(-5px) scale(1.02) !important;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    z-index: 10;
 }
 
-.btn:hover {
-    transform: scale(1.05) translateY(-2px);
-    box-shadow: 0 8px 25px rgba(255, 77, 121, 0.6);
+.polaroid-card:hover img {
+    filter: sepia(0%) contrast(100%);
 }
 
-.hidden {
-    display: none;
+.polaroid-card .caption {
+    font-family: 'Caveat', cursive;
+    font-size: 1.5rem;
+    color: #4a4a4a;
+    text-align: center;
+    margin-top: 16px;
+    line-height: 1;
+}
+
+/* Subtle Rotations for organic feel */
+.rotate-1 { transform: rotate(1deg); }
+.-rotate-2 { transform: rotate(-2deg); }
+
+/* Image Hover Effects */
+.hover-image {
+    transition: transform 0.5s ease;
+}
+
+.hover-image:hover {
+    transform: scale(1.03);
+}
+
+/* Fade In Animation */
+.fade-in {
     opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
-.reveal {
-    display: block;
-    animation: fadeIn 1s forwards;
-    margin-top: 25px;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    padding-top: 25px;
-}
-
-.reveal p {
-    margin-bottom: 15px;
-    line-height: 1.7;
-    font-size: 1.1rem;
-    color: #fce4ec;
-    font-weight: 300;
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
 }

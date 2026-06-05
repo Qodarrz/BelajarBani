@@ -1,53 +1,50 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // Generate floating hearts in the background
-    const heartContainer = document.getElementById("heart-container");
+    // 1. "Days Spent Together" Counter
+    // Set your relationship start date here (Year, Month (0-indexed), Day)
+    // For example, August 12, 2024
+    const startDate = new Date(2024, 7, 12); 
+    const currentDate = new Date();
+    
+    // Calculate difference in milliseconds
+    const diffTime = Math.abs(currentDate - startDate);
+    // Convert to days
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); 
+    
+    const counterElement = document.getElementById("days-counter");
+    
+    // Animate the counter
+    let start = 0;
+    const duration = 2000; // 2 seconds
+    const increment = diffDays / (duration / 16); // 60fps
+    
+    const updateCounter = () => {
+        start += increment;
+        if (start < diffDays) {
+            counterElement.innerText = Math.floor(start);
+            requestAnimationFrame(updateCounter);
+        } else {
+            counterElement.innerText = diffDays;
+        }
+    };
+    
+    updateCounter();
 
-    function createHeart() {
-        const heart = document.createElement("div");
-        heart.classList.add("heart");
-        // Randomly choose between a few romantic emojis
-        const emojis = ["❤️", "💖", "💕", "✨"];
-        heart.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
+    // 2. Scroll Reveal Animation (Fade In)
+    const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.15
+    };
 
-        // Randomize position, size, and animation duration
-        heart.style.left = Math.random() * 100 + "vw";
-        heart.style.animationDuration = Math.random() * 4 + 4 + "s"; // 4s to 8s
-        heart.style.fontSize = Math.random() * 15 + 10 + "px"; // 10px to 25px
-
-        heartContainer.appendChild(heart);
-
-        // Remove heart after animation finishes to prevent memory leak
-        setTimeout(() => {
-            heart.remove();
-        }, 8000);
-    }
-
-    // Create new heart every 400ms
-    const heartInterval = setInterval(createHeart, 400);
-
-    // Handle button click for secret message reveal
-    const revealBtn = document.getElementById("reveal-btn");
-    const secretMessage = document.getElementById("secret-message");
-
-    revealBtn.addEventListener("click", () => {
-        // Show the message
-        secretMessage.classList.remove("hidden");
-        secretMessage.classList.add("reveal");
-
-        // Hide the button gracefully
-        revealBtn.style.opacity = "0";
-        setTimeout(() => {
-            revealBtn.style.display = "none";
-        }, 300);
-
-        // Speed up heart generation briefly for an exciting "burst" effect
-        let burstCount = 0;
-        const burstInterval = setInterval(() => {
-            createHeart();
-            burstCount++;
-            if (burstCount > 40) {
-                clearInterval(burstInterval);
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target); // Only animate once
             }
-        }, 50);
-    });
+        });
+    }, observerOptions);
+
+    const fadeElements = document.querySelectorAll('.fade-in');
+    fadeElements.forEach(el => observer.observe(el));
 });

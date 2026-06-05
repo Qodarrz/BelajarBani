@@ -1,39 +1,180 @@
 <!DOCTYPE html>
-<html lang="id">
-
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Untukmu, Sayang</title>
-    <!-- Google Fonts for beautiful typography -->
+    <title>Our Sanctuary</title>
+    
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Outfit:wght@300;400;600&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500&family=Caveat:wght@500&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        rose: {
+                            900: '#AD1457', // Deep rose accent
+                            50: '#FDF8FA',
+                            100: '#F9EDF2',
+                        },
+                        surface: '#F9F9F9',
+                    },
+                    fontFamily: {
+                        serif: ['"EB Garamond"', 'serif'],
+                        sans: ['Inter', 'sans-serif'],
+                        handwriting: ['Caveat', 'cursive'],
+                    }
+                }
+            }
+        }
+    </script>
+    
     <link rel="stylesheet" href="style.css">
 </head>
+<body class="bg-surface text-gray-800 font-sans antialiased selection:bg-rose-900 selection:text-white">
 
-<body>
-    <!-- Container for the background floating hearts -->
-    <div id="heart-container"></div>
-
-    <!-- Main glassmorphism card -->
-    <div class="glass-card" id="main-card">
-        <h1 class="title">Halo, Sayang... ❤️</h1>
-        <p class="subtitle">Ada sesuatu yang ingin aku sampaikan.</p>
-
-        <button id="reveal-btn" class="btn">Buka Pesan</button>
-
-        <!-- The secret message hidden initially -->
-        <div id="secret-message" class="hidden">
-            <p>Terima kasih ya sudah selalu ada dan bertahan sama aku.</p>
-            <p>Kamu adalah bagian terbaik dari hari-hariku, alasanku tersenyum, dan tempat ternyaman untukku pulang.</p>
-            <p>Aku sayang banget sama kamu. 💕</p>
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-white/80 backdrop-blur-md z-50 border-b border-gray-100">
+        <div class="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="font-serif text-2xl font-medium tracking-wide text-rose-900">Our Sanctuary</a>
+            <div class="hidden md:flex space-x-8 text-sm font-medium text-gray-500">
+                <a href="#home" class="hover:text-rose-900 transition-colors">Home</a>
+                <a href="#story" class="hover:text-rose-900 transition-colors">Our Story</a>
+                <a href="#gallery" class="hover:text-rose-900 transition-colors">Gallery</a>
+                <a href="#letters" class="hover:text-rose-900 transition-colors">Letters</a>
+            </div>
         </div>
-    </div>
+    </nav>
+
+    <!-- Phase 1: Home (The Sanctuary) -->
+    <section id="home" class="pt-32 pb-20 px-6 min-h-[90vh] flex flex-col items-center justify-center text-center">
+        <div class="max-w-3xl mx-auto fade-in">
+            <span class="text-xs uppercase tracking-[0.3em] text-gray-400 mb-4 block">A Digital Keepsake</span>
+            <h1 class="font-serif text-5xl md:text-6xl text-gray-900 mb-8 leading-tight">In the quiet moments, <br> <i class="text-rose-900">I found you.</i></h1>
+            
+            <div class="bg-white p-8 md:p-12 shadow-sm rounded-2xl border border-rose-50 max-w-2xl mx-auto my-12 relative overflow-hidden">
+                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-rose-100 via-rose-900 to-rose-100 opacity-50"></div>
+                <h3 class="font-sans text-sm tracking-widest text-gray-400 uppercase mb-2">Days Spent Together</h3>
+                <div id="days-counter" class="font-serif text-6xl text-rose-900 mb-4">0</div>
+                <p class="text-gray-500 font-light italic">And a lifetime to go.</p>
+            </div>
+
+            <!-- Message of the Day -->
+            <div class="mt-8">
+                <p class="font-serif text-xl text-gray-700 italic border-l-2 border-rose-900 pl-6 text-left max-w-lg mx-auto">
+                    "I love you not only for what you are, but for what I am when I am with you." <br>
+                    <span class="block mt-4 text-sm font-sans text-gray-400 not-italic uppercase tracking-widest">— Roy Croft</span>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Phase 2: Our Story (The Timeline) -->
+    <section id="story" class="py-24 bg-white px-6">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="font-serif text-4xl text-gray-900 mb-3">Our Story</h2>
+                <p class="text-gray-500 font-light">Milestones written in the margins of our days.</p>
+            </div>
+
+            <div class="relative timeline-container fade-in">
+                <!-- Timeline Item 1 -->
+                <div class="mb-16 flex justify-between items-center w-full">
+                    <div class="w-5/12 text-right pr-8">
+                        <span class="text-rose-900 font-medium text-sm tracking-wide">August 12, 2024</span>
+                        <h4 class="font-serif text-2xl mt-2 mb-3">The First Coffee</h4>
+                        <p class="text-gray-500 text-sm font-light leading-relaxed">That little corner cafe near campus. Two lattes, and a conversation that stretched for hours.</p>
+                    </div>
+                    <div class="w-2/12 flex justify-center">
+                        <div class="w-4 h-4 bg-rose-900 rounded-full ring-4 ring-rose-50 z-10"></div>
+                    </div>
+                    <div class="w-5/12 pl-8">
+                        <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&q=80&w=600" alt="Coffee cup" class="rounded-xl shadow-sm hover-image object-cover h-48 w-full">
+                    </div>
+                </div>
+
+                <!-- Timeline Item 2 -->
+                <div class="mb-16 flex justify-between items-center w-full flex-row-reverse">
+                    <div class="w-5/12 text-left pl-8">
+                        <span class="text-rose-900 font-medium text-sm tracking-wide">October 30, 2024</span>
+                        <h4 class="font-serif text-2xl mt-2 mb-3">Library Late Nights</h4>
+                        <p class="text-gray-500 text-sm font-light leading-relaxed">Studying for midterms, sharing one pair of earphones, and whispering across the table.</p>
+                    </div>
+                    <div class="w-2/12 flex justify-center">
+                        <div class="w-4 h-4 bg-white border-2 border-rose-900 rounded-full z-10"></div>
+                    </div>
+                    <div class="w-5/12 pr-8">
+                        <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&q=80&w=600" alt="Library books" class="rounded-xl shadow-sm hover-image object-cover h-48 w-full">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Phase 3: Gallery of Moments -->
+    <section id="gallery" class="py-24 bg-surface px-6">
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="font-serif text-4xl text-gray-900 mb-3">Captured Whispers</h2>
+                <p class="text-gray-500 font-light">Glimpses of our favorite days.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10 fade-in">
+                <!-- Polaroid 1 -->
+                <div class="polaroid-card">
+                    <img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&q=80&w=500" alt="Hand holding">
+                    <p class="caption">Walking home in the rain.</p>
+                </div>
+                <!-- Polaroid 2 -->
+                <div class="polaroid-card rotate-1">
+                    <img src="https://images.unsplash.com/photo-1518621736915-f3b1c41bfd00?auto=format&fit=crop&q=80&w=500" alt="Flowers">
+                    <p class="caption">Flowers you picked for me.</p>
+                </div>
+                <!-- Polaroid 3 -->
+                <div class="polaroid-card -rotate-2">
+                    <img src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&q=80&w=500" alt="Polaroid picture">
+                    <p class="caption">Our first trip together.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Phase 4: Secret Letters -->
+    <section id="letters" class="py-24 bg-white px-6">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="font-serif text-4xl text-gray-900 mb-3">Midnight Whispers</h2>
+                <p class="text-gray-500 font-light">Words kept safe for you.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 fade-in">
+                <article class="bg-rose-50/50 p-8 rounded-2xl border border-rose-100 hover:shadow-md transition-shadow group cursor-pointer">
+                    <span class="text-xs tracking-widest text-gray-400 mb-2 block">February 14, 2025</span>
+                    <h3 class="font-serif text-2xl text-rose-900 mb-4 group-hover:text-rose-700 transition-colors">A Note on Valentine's</h3>
+                    <p class="text-gray-600 font-light text-sm line-clamp-3">I'm writing this while you're asleep. I just wanted to leave a small piece of my heart here, so you know that every morning I wake up next to you is a blessing...</p>
+                    <span class="inline-block mt-6 text-sm font-medium text-rose-900 border-b border-transparent group-hover:border-rose-900 transition-all">Read Letter →</span>
+                </article>
+
+                <article class="bg-surface p-8 rounded-2xl border border-gray-100 hover:shadow-md transition-shadow group cursor-pointer">
+                    <span class="text-xs tracking-widest text-gray-400 mb-2 block">December 31, 2024</span>
+                    <h3 class="font-serif text-2xl text-gray-900 mb-4 group-hover:text-rose-900 transition-colors">Looking Back</h3>
+                    <p class="text-gray-600 font-light text-sm line-clamp-3">Another year has passed, and looking back, the highlights were always the quiet moments. The laughter in the kitchen, the shared silences...</p>
+                    <span class="inline-block mt-6 text-sm font-medium text-gray-900 border-b border-transparent group-hover:border-gray-900 transition-all">Read Letter →</span>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 text-center border-t border-gray-100">
+        <p class="font-serif italic text-gray-400 text-sm">Our Sanctuary &copy; Forever</p>
+    </footer>
 
     <script src="animasi.js"></script>
 </body>
-
 </html>
